@@ -3,7 +3,27 @@ package vo;
 public class MemberVO {
 	
 	private int idx;
-	private String id,pwd,name,phone,joindate,addr;
+	private String id,pwd,name,phone,joindate,addr,email,gender,birth;
+	
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getIdx() {
 		return idx;
 	}
