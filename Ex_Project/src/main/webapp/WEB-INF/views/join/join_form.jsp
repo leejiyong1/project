@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/pro/resources/css/join.css">
+<script src="/pro/resources/js/httpRequest.js"></script>
 <script>
 	function idCheck() {
 		let id = document.getElementById('id').value.trim();
@@ -18,6 +19,18 @@
 		let url = 'id_check.do';
 		let param = "id="+id;
 		sendRequest(url,param,checkId,'post');
+	}
+	
+	function checkId() {
+		if(xhr.readyState == 4 &&xhr.status==200){
+			let data = xhr.responseText;
+			
+			if(data == 'no'){
+				alert('동일한 아이디가 존재합니다');
+			}else{
+				alert('사용가능한 아이디 입니다.');
+			}
+		}
 	}
 	
 	
