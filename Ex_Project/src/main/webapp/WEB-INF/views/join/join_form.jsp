@@ -41,6 +41,31 @@
 		check=false;
 	}
 	
+	function join(f) {
+		let name = f.name.value;
+		let id = f.id.value;
+		let pwd = f.pwd.value;
+		let pwd_ch = f.pwd_ch.value;
+		let phone = f.phone.value;
+		let email = f.email.value;
+		let birth = f.birth.value;
+		let addr = f.addr.value;
+		if(check == false){
+			alert('중복확인해주세요');
+			return;
+		}
+		if(name == ''){
+			alert('이름 입력해주세요');
+			f.name.focus();
+			return;
+		}
+		if(id == ''){
+			alert('아이디 입력해주세요');
+			f.id.focus();
+			return;
+		}
+		
+	}
 </script>
 </head>
 <body>
@@ -112,7 +137,7 @@
 			</tr> -->
 			<tr>
 				<td colspan="2" align="center">
-				<input class="btn_submit" type="button" value="가입하기" onclick="return joinCheck()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input class="btn_submit" type="button" value="가입하기" onclick="join(this.form)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input class="btn_reset" type="reset" value="다시작성"></td>
 			</tr>
 		</table>
