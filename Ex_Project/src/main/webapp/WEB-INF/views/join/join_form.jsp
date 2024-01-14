@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="/pro/resources/css/join.css">
 <script src="/pro/resources/js/httpRequest.js"></script>
 <script>
+	
+	let check = false;
+	
 	function idCheck() {
 		let id = document.getElementById('id').value.trim();
 		
@@ -28,11 +31,15 @@
 			if(data == 'no'){
 				alert('동일한 아이디가 존재합니다');
 			}else{
+				check = true;
 				alert('사용가능한 아이디 입니다.');
 			}
 		}
 	}
 	
+	function change() {
+		check=false;
+	}
 	
 </script>
 </head>
@@ -51,7 +58,7 @@
 			</tr>
 			<tr>
 				<td>아이디*</td>
-				<td><input type="text" name="id" size="20" id="id">
+				<td><input type="text" name="id" size="20" id="id" onchange="change()">
 				<input class="btn_idcheck" type="button" value="중복체크" onclick="idCheck()"></td>			
 			</tr>
 			<tr>

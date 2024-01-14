@@ -6,6 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="idcheck" resultType="member" parameterType="String">
 		select * from member where id = #{id}
 	</select>
+	
+	<insert id="join_insert" parameterType="member">
+		insert into member values(seq_mem_idx.nextval,#{id},#{pwd},#{name},#{addr},sysdate,010-1111-1111,mega@naver.com,990706,male)
+	</insert>
 </mapper>
 
 
