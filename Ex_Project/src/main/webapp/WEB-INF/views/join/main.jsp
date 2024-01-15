@@ -8,5 +8,6 @@
 </head>
 <body>
 	${mem.id }님환영합니다.
+	<input type="button" value="로그아웃" onclick="location.href='logout.do'">
 </body>
 </html>

@@ -75,5 +75,12 @@ public class MemberController {
 		return "yes";
 		}
 	}
+	
+	@RequestMapping("logout.do")
+	public String logout() {
+		session = request.getSession();
+		session.removeAttribute("mem");
+		return "redirect:login_form.do";
+	}
 
 }
