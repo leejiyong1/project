@@ -32,7 +32,12 @@ public class MemberController {
 		}else {
 			return "no";
 		}
-		
+	}
+	
+	@RequestMapping("join.do")
+	public String join(MemberVO vo) {
+		dao.join(vo);
+		return "redirect:join_form.do";
 	}
 	
 

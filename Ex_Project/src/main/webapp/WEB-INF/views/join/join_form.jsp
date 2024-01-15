@@ -50,6 +50,9 @@
 		let email = f.email.value;
 		let birth = f.birth.value;
 		let addr = f.addr.value;
+		let gender = f.gender.value;
+		let date = new Date();
+		let birth2 = new Date(birth);
 		if(check == false){
 			alert('중복확인해주세요');
 			return;
@@ -65,6 +68,48 @@
 			return;
 		}
 		
+		if(pwd == ''){
+			alert('비밀번호 입력해주세요');
+			f.pwd.focus();
+			return;
+		}
+		if(pwd_ch == ''){
+			alert('비밀번호 입력해주세요');
+			f.pwd_ch.focus();
+			return;
+		}
+		
+		if(pwd != pwd_ch){
+			alert('비밀번호 확인해주세요');
+			f.pwd.focus();
+			return;
+		}
+		if(phone == ''){
+			alert('번호 입력해주세요');
+			f.phone.focus();
+			return;
+		}
+		if(email == ''){
+			alert('이메일 입력해주세요');
+			f.email.focus();
+			return;
+		}
+		if(birth == ''){
+			alert('생일 입력해주세요');
+			f.birth.focus();
+			return;
+		}
+		if(date<birth2){
+			alert('생일 확인해주세요');
+			f.birth.focus();
+			return;
+		}
+		if(addr == ''){
+			alert('주소 입력해주세요');
+			f.addr.focus();
+			return;
+		}
+		f.submit();
 	}
 </script>
 </head>
@@ -129,7 +174,7 @@
 			</tr> -->
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="addr"size="28" readonly /></td>			
+				<td><input type="text" name="addr"size="28"/></td>			
 			</tr>
 			<!-- <tr>
 				<td>상세주소</td>

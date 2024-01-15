@@ -15,5 +15,10 @@ public class MemberDAO {
 		MemberVO vo = sqlSession.selectOne("m.idcheck", id);
 		return vo;
 	}
+	
+	public int join(MemberVO vo) {
+		int res = sqlSession.insert("m.join_insert", vo);
+		return res;
+	}
 
 }
