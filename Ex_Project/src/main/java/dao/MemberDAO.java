@@ -1,5 +1,6 @@
 package dao;
 
+
 import org.apache.ibatis.session.SqlSession;
 
 import vo.MemberVO;
@@ -19,6 +20,11 @@ public class MemberDAO {
 	public int join(MemberVO vo) {
 		int res = sqlSession.insert("m.join_insert", vo);
 		return res;
+	}
+	
+	public MemberVO login(String id) {
+		MemberVO vo = sqlSession.selectOne("m.login", id);
+		return vo;
 	}
 
 }

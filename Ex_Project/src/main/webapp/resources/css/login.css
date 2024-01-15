@@ -1,0 +1,12 @@
+@charset "utf-8";
+.wrap{width: 800px; margin: 0 auto;}
+.wrap>h2{text-align: center; font-size: 26px; padding: 50px; margin-top: 100px;}
+.wrap>p{padding: 10px; border-bottom: 2px solid #000; margin-bottom: 50px;}
+.wrap table{margin: 0 auto; margin-bottom: 50px;}
+.wrap table td:first-child{width: 150px; height: 40px;}
+.btn_idcheck{width: 100px; height: 25px; margin-left: 20px; background-color: black; border-color: black; color: white;}
+.btn_findpost{width: 100px; height: 25px; margin-left: 20px; background-color: black; border-color: black; color: white;}
+.btn_submit{width: 100px; height: 40px; margin-top: 30px; background-color: black; border-color: black; color: white;}
+.btn_reset{width: 100px; height: 40px; margin-top: 30px; background-color: white; border-color: black; color: black;}
+.gender {-webkit-appearance: radio;}
+.search {text-decoration: none; color: gray;}
