@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2 !important;
+    text-align: center !important;
+}
+
+tr {
+    transition: background-color 0.3s ease;
+}
+
+tr:hover {
+    background-color: #e0e0e0; /* hover 시 배경색 변경 */
+}
+
+h2 {
+    flex: 1;
+}
+
+.btn-success {
+    margin-right: auto; /* 오른쪽 끝에 위치하도록 설정 */
+}
