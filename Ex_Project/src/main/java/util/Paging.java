@@ -25,14 +25,26 @@ public class Paging {
 		//만약 잘못된 연산과 움직임으로 인하여 현재 페이지 수가 전체 페이지 수를
 		//넘을 경우 강제로 현재페이지 값을 전체 페이지 값으로 변경
 		if(nowPage > totalPage)nowPage = totalPage;
-		
 
 		//시작 페이지와 마지막 페이지를 구함.
-		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
-		endPage = startPage + blockPage - 1; //
-		
+//		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
+//		endPage = startPage + blockPage - 1; //
+		if(nowPage <7) {
+		startPage = Math.max(nowPage-9, 1);
+		endPage = Math.min(startPage+9, totalPage);
+		}else {
+			startPage= nowPage-5;
+			endPage = Math.min(nowPage+4, totalPage);
+			if(endPage - startPage != 9) {
+				startPage = endPage -9;
+			}
+		}
 		//마지막 페이지 수가 전체페이지수보다 크면 마지막페이지 값을 변경
-		if(endPage > totalPage)endPage = totalPage;
+//		startPage = Math.max(1, nowPage - blockPage / 2 + 1);// 항상 페이지 그룹 크기의 반만큼 앞으로 이동
+//		endPage = startPage + blockPage - 1;
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
 		
 		//마지막페이지가 전체페이지보다 작을 경우 다음 페이징이 적용할 수 있도록
 		//boolean형 변수의 값을 설정

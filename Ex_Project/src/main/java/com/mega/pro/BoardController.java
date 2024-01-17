@@ -50,5 +50,4 @@ public class BoardController {
 		return MyCommon.Board.VIEW_PATH+"board_write.jsp";
 	}
 	
-
 }
