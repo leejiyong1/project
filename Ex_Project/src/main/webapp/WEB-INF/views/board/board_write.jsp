@@ -38,6 +38,11 @@
             resize: vertical; /* 수직 크기 조절 허용 */
         }
     </style>
+    <script>
+    	function send(f) {
+			f.submit();
+		}
+    </script>
 </head>
 <body>
 	<div class="container">
@@ -45,20 +50,21 @@
             <div class="write-post">
                 <h3>새로운 글쓰기</h3>
                 <form enctype="multipart/form-data" method="post" action="board_write.do">
+                <input name="id" type="hidden" value="dlwldyd">
                     <div class="form-group">
                         <label for="postTitle">제목</label>
-                        <input type="text" class="form-control" id="postTitle" placeholder="글 제목을 입력하세요">
+                        <input type="text" class="form-control" id="postTitle" placeholder="글 제목을 입력하세요" name="title">
                     </div>
                     <div class="form-group">
                         <label for="postContent">내용</label>
-                        <textarea class="form-control" id="postContent" rows="5" placeholder="글 내용을 입력하세요"></textarea>
+                        <textarea class="form-control" id="postContent" rows="5" placeholder="글 내용을 입력하세요" name="content"></textarea>
                     </div>
                     <!-- 사진 업로드 추가 -->
                     <div class="form-group">
                         <label for="postImage">사진 업로드</label>
-                        <input type="file" class="form-control-file" id="postImage" multiple="multiple">
+                        <input type="file" class="form-control-file" id="postImage" multiple="multiple" name="photo">
                     </div>
-                    <button type="submit" class="btn btn-primary">글쓰기</button>
+                    <button class="btn btn-primary" onclick="send(this.form)">글쓰기</button>
                 </form>
             </div>
         </div>

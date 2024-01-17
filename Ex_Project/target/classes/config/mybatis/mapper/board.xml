@@ -13,6 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="count_page" resultType="int">
 		select count(*) from board
 	</select>
+	
+	<insert id="board_write" parameterType="board">
+	 insert into board values(seq_board_idx.nextval,#{title},#{content},#{id},#{ip},sysdate,#{filename})
+	</insert>
 </mapper>
 
 

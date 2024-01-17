@@ -23,5 +23,10 @@ public class BoardDAO {
 		int total = sqlSession.selectOne("b.count_page");
 		return total;
 	}
+	
+	public int board_write(BoardVO vo) {
+		int res = sqlSession.insert("b.board_write", vo);
+		return res;
+	}
 
 }

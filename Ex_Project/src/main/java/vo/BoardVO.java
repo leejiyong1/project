@@ -1,8 +1,26 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	private int idx;
-	private String id,title,content,regdate,ip;
+	private String id,title,content,regdate,ip,filename;
+	
+	private MultipartFile photo;
+	
+	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
 	public int getIdx() {
 		return idx;
 	}
