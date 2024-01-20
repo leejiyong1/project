@@ -39,7 +39,7 @@ public class MailUtil {
 	public void addInline(String contentId, DataSource dataSource) throws MessagingException {
 		messageHelper.addInline(contentId, dataSource);
 	}
-
+	
 	public void send() {
 		mailSender.send(message);
 	}
