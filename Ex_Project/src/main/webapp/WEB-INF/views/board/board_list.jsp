@@ -25,7 +25,7 @@
 
 				<tr class="record">
 					<td width="10%">${board.idx }</td>
-					<td width="50%">${board.title }</td>
+					<td width="50%"><a href="board_view.do?idx=${board.idx }&page=${empty param.page ? 1 : param.page}">${board.title }</a></td>
 					<td width="20%">${board.id }</td>
 					<td width="20%">${fn:split(board.regdate,' ')[0]}</td>
 				</tr>

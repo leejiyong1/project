@@ -43,7 +43,7 @@
 			}else if(data == 'no_pwd'){
 				alert('비밀번호가 틀립니다.');
 			}else{
-				location.href= "main.do";
+				location.href= "board_list.do";
 			}
 		}
 	}

@@ -37,5 +37,10 @@ public class BoardDAO {
 		int res = sqlSession.delete("b.board_delete",map);
 		return res;
 	}
+	
+	public BoardVO board_select_view(int idx) {
+		BoardVO vo = sqlSession.selectOne("b.board_view", idx);
+		return vo;
+	}
 
 }

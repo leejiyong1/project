@@ -106,5 +106,11 @@ public class BoardController {
 		}
 	}
 	
+	@RequestMapping("/board_view.do")
+	public String board_view(int idx,int page) {
+		BoardVO vo = dao.board_select_view(idx);
+		return "redirect:board_view_form.do";
+	}
+	
 	
 }

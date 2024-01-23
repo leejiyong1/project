@@ -21,6 +21,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="board_delete" parameterType="java.util.Map">
 		delete from board where idx = #{idx} and id = #{id}
 	</delete>
+	
+	<select id="board_view" resultType="board" parameterType="int">
+		select * from board where idx = #{idx}
+	</select>
 </mapper>
 
 
