@@ -2,6 +2,7 @@ package dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -26,6 +27,14 @@ public class BoardDAO {
 	
 	public int board_write(BoardVO vo) {
 		int res = sqlSession.insert("b.board_write", vo);
+		return res;
+	}
+	
+	public int board_delete(int idx,String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("idx", idx);
+		map.put("id", id);
+		int res = sqlSession.delete("b.board_delete",map);
 		return res;
 	}
 

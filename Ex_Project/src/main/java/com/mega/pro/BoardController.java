@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.BoardDAO;
@@ -92,6 +93,17 @@ public class BoardController {
 		vo.setFilename(filename);
 		dao.board_write(vo);
 		return "redirect:board_list.do";
+	}
+	
+	@RequestMapping("/board_del.do")
+	@ResponseBody
+	public String board_del(String id,int idx) {
+		int res = dao.board_delete(idx, id);
+		if(res>0) {
+			return "1";
+		}else {
+			return "0";
+		}
 	}
 	
 	
