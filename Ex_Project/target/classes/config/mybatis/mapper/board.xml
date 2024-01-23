@@ -17,6 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="board_write" parameterType="board">
 	 insert into board values(seq_board_idx.nextval,#{title},#{content},#{id},#{ip},sysdate,#{filename})
 	</insert>
+	
+	<delete id="board_delete" parameterType="java.util.Map">
+		delete from board where idx = #{idx} and id = #{id}
+	</delete>
 </mapper>
 
 
