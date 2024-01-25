@@ -9,6 +9,13 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/pro/resources/css/board.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script>
+	function searchBoard() {
+		let keyword = document.getElementById('keyword').value;
+		
+		location.href = 'board_list.do?keyword='+keyword;
+	}
+</script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/mypage/index.jsp"/>
@@ -39,6 +46,15 @@
 			</td>
 		</tr>
 		</table>
+		<!-- 검색 창 -->
+		<div class="row mb-3">
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요">
+			</div>
+			<div class="col-md-4">
+				<button class="btn btn-primary" onclick="searchBoard()">검색</button>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -47,5 +47,10 @@ public class BoardDAO {
 		int res = sqlSession.update("b.board_hit",idx);
 		return res;
 	}
+	
+	public List<BoardVO> board_search(HashMap<String, Object> map) {
+		List<BoardVO> list = sqlSession.selectOne("b.board_search", map);
+		return list;
+	}
 
 }
