@@ -78,7 +78,7 @@
 			</tr>
 		</table>
 	</form>
-	<p class="loginSearchBtn" style="border-bottom: none"><a href="MemberServlet?command=member_join_form" class="search">회원가입</a> ㅣ <a href="MemberServlet?command=searchId_Form" class="search">아이디 찾기</a> ㅣ <a href="MemberServlet?command=searcPwd_Form" class="search">비밀번호 찾기</a></p>
+	<p class="loginSearchBtn" style="border-bottom: none"><a href="join_form.do" class="search">회원가입</a> ㅣ <a href="Searchid_form.do" class="search">아이디 찾기</a> ㅣ <a href="searchPwd_form.do" class="search">비밀번호 찾기</a></p>
     </div>
     <br>
 </body>
