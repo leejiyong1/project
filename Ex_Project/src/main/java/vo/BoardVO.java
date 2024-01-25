@@ -3,7 +3,7 @@ package vo;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	private int idx;
+	private int idx,hit;
 	private String id,title,content,regdate,ip,filename;
 	
 	private MultipartFile photo;
@@ -56,6 +56,12 @@ public class BoardVO {
 	}
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	
 	

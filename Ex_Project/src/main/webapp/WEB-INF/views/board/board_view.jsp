@@ -72,21 +72,13 @@
 					<img src="/pro/resources/img/btn_list.gif" 
 					onclick="location.href='board_list.do?page=${param.page}'"
 					     style="cursor:pointer;">
-					<c:if test="${!empty mem }">
+					<c:if test="${mem.id eq vo.id }">
 					<input type="hidden" name="id" value="${mem.id }">
-					<c:if test="${ vo.depth eq 0 }">
-						<!-- 댓글 -->
-						<img src="/pro/resources/img/btn_reply.gif" onclick="reply();" 
-						     style="cursor:pointer;">
-					</c:if>     
-					     
 					<!-- 수정 -->
 					<img src="/pro/resources/img/btn_modify.gif" onclick="modify();"
 					     style="cursor:pointer;">  
 					     
 					<!-- 삭제 -->
-					
-					
 					<img src="/pro/resources/img/btn_delete.gif" onclick="del(this.form);"
 					     style="cursor:pointer;">
 					</c:if>         

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/mypage/index.jsp"/>
 	<div class="container">
 	 <a href="board_write_form.do" class="btn btn-success">글쓰기</a>
 		<h2 align="center">게시판</h2>
@@ -19,14 +20,16 @@
 				<th>게시물 번호</th>
 				<th>제목</th>
 				<th>작성자 아이디</th>
+				<th>조회수</th>
 				<th>작성 날짜</th>
 			</tr>
 			<c:forEach var="board" items="${list}">
 
 				<tr class="record">
 					<td width="10%">${board.idx }</td>
-					<td width="50%"><a href="board_view.do?idx=${board.idx }&page=${empty param.page ? 1 : param.page}">${board.title }</a></td>
+					<td width="30%"><a href="board_view.do?idx=${board.idx }&page=${empty param.page ? 1 : param.page}">${board.title }</a></td>
 					<td width="20%">${board.id }</td>
+					<td width="20%">${board.hit}</td>
 					<td width="20%">${fn:split(board.regdate,' ')[0]}</td>
 				</tr>
 			</c:forEach>
