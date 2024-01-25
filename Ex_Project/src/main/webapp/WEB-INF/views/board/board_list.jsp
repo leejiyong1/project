@@ -13,7 +13,7 @@
 	function searchBoard() {
 		let keyword = document.getElementById('keyword').value;
 		
-		location.href = 'board_list.do?keyword='+keyword;
+		location.href = 'board_search.do?keyword='+keyword;
 	}
 </script>
 </head>

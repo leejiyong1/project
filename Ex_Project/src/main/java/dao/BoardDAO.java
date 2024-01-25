@@ -52,5 +52,10 @@ public class BoardDAO {
 		List<BoardVO> list = sqlSession.selectOne("b.board_search", map);
 		return list;
 	}
+	
+	public int getSearchTotal(String keyword) {
+		int cnt = sqlSession.selectOne("b.count_page_search", keyword);
+		return cnt;
+	}
 
 }

@@ -30,8 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update board set hit = hit +1 where idx = #{idx}
 	</update>
 	
-	<select id="board_search" resultType="board" parameterType="String">
+	<select id="board_search" resultType="board" parameterType="java.util.HashMap">
 		select * from (select rank() over(order by idx desc) no, b.* from board b) where no between #{start} and #{end} and title = '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="count_page_search" resultType="String">
+		select count(*) from board where title = '%' || #{keyword} || '%'
 	</select>
 </mapper>
 

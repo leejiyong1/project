@@ -124,6 +124,27 @@ public class BoardController {
 		return MyCommon.Board.VIEW_PATH+"board_view.jsp";
 	}
 	
+	@RequestMapping("/board_search.do")
+	public String board_view(Model model, String page, String keyword) {
+		int nowpage = 1;
+		if(page != null && !page.isEmpty()) {
+			nowpage = Integer.parseInt(page);
+		}
+		int start = (nowpage-1) * Common.Board.BLOCKLIST + 1;
+		int end = start+Common.Board.BLOCKLIST-1;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("keyword", keyword);
+		List<BoardVO> list = dao.board_search(map);
+		request.getSession().removeAttribute("hit");
+		int rowTotal = dao.getSearchTotal(keyword);
+		String pageMenu = Paging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE);
+		model.addAttribute("list", list);
+		model.addAttribute("menu",pageMenu);
+		return MyCommon.Board.VIEW_PATH+"board_list.jsp";
+	}
+	
 	
 	
 	
