@@ -27,8 +27,6 @@ public class Paging {
 		if(nowPage > totalPage)nowPage = totalPage;
 
 		//시작 페이지와 마지막 페이지를 구함.
-//		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
-//		endPage = startPage + blockPage - 1; //
 		if(nowPage <7) {
 		startPage = Math.max(nowPage-9, 1);
 		endPage = Math.min(startPage+9, totalPage);
@@ -40,8 +38,6 @@ public class Paging {
 			}
 		}
 		//마지막 페이지 수가 전체페이지수보다 크면 마지막페이지 값을 변경
-//		startPage = Math.max(1, nowPage - blockPage / 2 + 1);// 항상 페이지 그룹 크기의 반만큼 앞으로 이동
-//		endPage = startPage + blockPage - 1;
 		if(endPage > totalPage) {
 			endPage = totalPage;
 		}
@@ -57,7 +53,6 @@ public class Paging {
 //-----그룹페이지처리 이전 --------------------------------------------------------------------------------------------		
 		if(isPrevPage){
 			sb.append("<a href ='"+pageURL+"?page=");
-			//sb.append(nowPage - blockPage);
 			sb.append( startPage-1 );
 			sb.append("'><img src='/pro/resources/img/btn_prev.gif'></a>");
 		}
