@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="board_view" resultType="board" parameterType="int">
 		select * from board where idx = #{idx}
 	</select>
+	
+	<update id="board_hit" parameterType="int">
+		update board set hit = hit +1 where idx = #{idx}
+	</update>
 </mapper>
 
 

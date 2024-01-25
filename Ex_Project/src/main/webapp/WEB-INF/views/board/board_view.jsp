@@ -44,12 +44,12 @@
 		
 			<tr>
 				<td>제목</td>
-				<td>${ vo.subject }</td>
+				<td>${ vo.title }</td>
 			</tr>
 			
 			<tr>
 				<td>작성자</td>
-				<td>${ vo.name }</td>
+				<td>${ vo.id }</td>
 			</tr>
 			
 			<tr>
@@ -66,17 +66,11 @@
 				<td>내용</td>
 				<td><pre>${ vo.content }</pre></td>
 			</tr>
-			
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="c_pwd"></td>
-			</tr>
-			
 			<tr>
 				<td colspan="2">
 					<!-- 목록으로 -->
 					<img src="/pro/resources/img/btn_list.gif" 
-					onclick="location.href='list.do?page=${param.page}'"
+					onclick="location.href='board_list.do?page=${param.page}'"
 					     style="cursor:pointer;">
 					<c:if test="${!empty mem }">
 					<input type="hidden" name="id" value="${mem.id }">
@@ -99,38 +93,7 @@
 				</td>
 			</tr>
 		</table>
-		
 		</form>
-		
-		<div id="comment_form">
-			<form>
-				<table border="1">
-					<tr>
-						<th>작성자</th>
-						<td><input name="name"></td>
-					</tr>
-					
-					<tr>
-						<th>내용</th>
-						<td><textarea name="content"></textarea></td>
-					</tr>
-					
-					<tr>
-						<th>비밀번호</th>
-						<td>
-						<input name="pwd" type="password" size="13">
-						<input type="button" value="댓글" onclick="send(this.form);">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		
-		<!-- 댓글이 보여지는 영역 -->
-		<div id="comment_disp">
-		
-		</div>
-		
 	</body>
 </html>
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class BoardController {
 	@Autowired
 	ServletContext app;
 	
+	@Autowired
+	HttpSession session;
+	
 	BoardDAO dao;
 	
 	public void setDao(BoardDAO dao) {
@@ -46,6 +50,7 @@ public class BoardController {
 		map.put("start", start);
 		map.put("end", end);
 		List<BoardVO> list = dao.board_list(map);
+		request.getSession().removeAttribute("hit");
 		int rowTotal = dao.page();
 		String pageMenu = Paging.getPaging("board_list.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE);
 		model.addAttribute("list", list);
@@ -107,9 +112,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board_view.do")
-	public String board_view(int idx,int page) {
+	public String board_view(int idx,int page,Model model) {
 		BoardVO vo = dao.board_select_view(idx);
-		return "redirect:board_view_form.do";
+		
+		String hit = (String)session.getAttribute("hit");
+		if(hit == null) {
+			dao.board_hit(idx);
+			session.setAttribute("hit", "+1");
+		}
+		model.addAttribute("vo", vo);
+		return MyCommon.Board.VIEW_PATH+"board_view.jsp";
 	}
 	
 	

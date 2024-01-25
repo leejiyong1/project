@@ -25,5 +25,7 @@ regdate date
 insert into board values(seq_board_idx.nextval,'첫글','첫글첫글첫글','dlwldyd','00',sysdate,'no_file');
 
 alter table board add filename varchar2(150);
+alter table board add hit number(10);
+update board set hit = 1;
 
 

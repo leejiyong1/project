@@ -46,7 +46,7 @@ public class MemberController {
 	@RequestMapping("join.do")
 	public String join(MemberVO vo) {
 		dao.join(vo);
-		return "redirect:join_form.do";
+		return "redirect:login_form.do";
 	}
 
 	@RequestMapping("login_form.do")

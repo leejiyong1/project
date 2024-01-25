@@ -42,5 +42,10 @@ public class BoardDAO {
 		BoardVO vo = sqlSession.selectOne("b.board_view", idx);
 		return vo;
 	}
+	
+	public int board_hit(int idx) {
+		int res = sqlSession.update("b.board_hit",idx);
+		return res;
+	}
 
 }
