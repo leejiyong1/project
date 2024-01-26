@@ -138,13 +138,12 @@ public class BoardController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("keyword", keyword);
-		System.out.println(map.get("start"));
 		List<BoardVO> list = dao.board_search(map);
 		request.getSession().removeAttribute("hit");
 		int rowTotal = dao.getSearchTotal(keyword);
 		String pageMenu = SearchPaging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE,keyword);
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
-		return MyCommon.Board.VIEW_PATH+"board_search.jsp";
+		return MyCommon.Board.VIEW_PATH+"board_list.jsp";
 	}	
 }

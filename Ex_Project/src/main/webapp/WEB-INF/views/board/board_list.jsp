@@ -15,6 +15,12 @@
 		
 		location.href = 'board_search.do?keyword='+keyword;
 	}
+	
+	function handleEnterKeyPress(event) {
+		if (event.key === 'Enter') {
+			searchBoard();
+		}
+	}
 </script>
 </head>
 <body>
@@ -34,7 +40,13 @@
 
 				<tr class="record">
 					<td width="10%">${board.idx }</td>
+					<c:if test="${param.keyword eq null }">
 					<td width="30%"><a href="board_view.do?idx=${board.idx }&page=${empty param.page ? 1 : param.page}">${board.title }</a></td>
+					</c:if>
+					<c:if test="${param.keyword ne null }">
+					<td width="30%"><a href="board_view.do?idx=${board.idx }&page=${empty param.page ? 1 : param.page}&keyword=${param.keyword}">
+					${board.title }</a></td>
+					</c:if>
 					<td width="20%">${board.id }</td>
 					<td width="20%">${board.hit}</td>
 					<td width="20%">${fn:split(board.regdate,' ')[0]}</td>
@@ -49,7 +61,7 @@
 		<!-- 검색 창 -->
 		<div class="row mb-3">
 			<div class="col-md-8">
-				<input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요">
+				<input type="text" class="form-control" id="keyword" placeholder="검색어를 입력하세요" onkeypress="handleEnterKeyPress(event)">
 			</div>
 			<div class="col-md-4">
 				<button class="btn btn-primary" onclick="searchBoard()">검색</button>

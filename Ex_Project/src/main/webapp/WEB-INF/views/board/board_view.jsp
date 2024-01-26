@@ -69,9 +69,16 @@
 			<tr>
 				<td colspan="2">
 					<!-- 목록으로 -->
+					<c:if test="${param.keyword eq null}">
 					<img src="/pro/resources/img/btn_list.gif" 
 					onclick="location.href='board_list.do?page=${param.page}'"
 					     style="cursor:pointer;">
+					</c:if>
+					<c:if test="${param.keyword ne null}">
+					<img src="/pro/resources/img/btn_list.gif" 
+					onclick="location.href='board_search.do?page=${param.page}&keyword=${param.keyword }'"
+					     style="cursor:pointer;">
+					</c:if>
 					<c:if test="${mem.id eq vo.id }">
 					<input type="hidden" name="id" value="${mem.id }">
 					<!-- 수정 -->
