@@ -146,9 +146,5 @@ public class BoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
 		return MyCommon.Board.VIEW_PATH+"board_search.jsp";
-	}
-	
-	
-	
-	
+	}	
 }
