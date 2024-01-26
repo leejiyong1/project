@@ -27,15 +27,16 @@ public class Paging {
 		if(nowPage > totalPage)nowPage = totalPage;
 
 		//시작 페이지와 마지막 페이지를 구함.
-		if(nowPage <7) {
-		startPage = Math.max(nowPage-9, 1);
-		endPage = Math.min(startPage+9, totalPage);
-		}else {
-			startPage= nowPage-5;
-			endPage = Math.min(nowPage+4, totalPage);
-			if(endPage - startPage != 9) {
-				startPage = endPage -9;
-			}
+		
+		if (nowPage < 7) {
+		    startPage = Math.max(nowPage - 9, 1);
+		    endPage = Math.min(startPage + 9, totalPage);
+		} else {
+		    startPage = nowPage - 5;
+		    endPage = Math.min(nowPage + 4, totalPage);
+		    if (endPage - startPage != 9) {
+		        startPage = Math.max(endPage - 9, 1); // 음수가 되지 않도록 수정
+		    }
 		}
 		//마지막 페이지 수가 전체페이지수보다 크면 마지막페이지 값을 변경
 		if(endPage > totalPage) {
@@ -100,10 +101,3 @@ public class Paging {
 		return sb.toString();
 	}
 }
-
-
-
-
-
-
-

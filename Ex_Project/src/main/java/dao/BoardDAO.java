@@ -48,8 +48,8 @@ public class BoardDAO {
 		return res;
 	}
 	
-	public List<BoardVO> board_search(HashMap<String, Object> map) {
-		List<BoardVO> list = sqlSession.selectOne("b.board_search", map);
+	public List<BoardVO> board_search(Map<String, Object> map) {
+		List<BoardVO> list = sqlSession.selectList("b.board_search", map);
 		return list;
 	}
 	

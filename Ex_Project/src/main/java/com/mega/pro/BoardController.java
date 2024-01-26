@@ -3,6 +3,7 @@ package com.mega.pro;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -49,9 +50,9 @@ public class BoardController {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", start);
 		map.put("end", end);
-		List<BoardVO> list = dao.board_list(map);
-		request.getSession().removeAttribute("hit");
+		List<BoardVO> list =dao.board_list(map);
 		int rowTotal = dao.page();
+		request.getSession().removeAttribute("hit");
 		String pageMenu = Paging.getPaging("board_list.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE);
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
@@ -132,17 +133,18 @@ public class BoardController {
 		}
 		int start = (nowpage-1) * Common.Board.BLOCKLIST + 1;
 		int end = start+Common.Board.BLOCKLIST-1;
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("end", end);
 		map.put("keyword", keyword);
+		System.out.println(map.get("start"));
 		List<BoardVO> list = dao.board_search(map);
 		request.getSession().removeAttribute("hit");
 		int rowTotal = dao.getSearchTotal(keyword);
 		String pageMenu = Paging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE);
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
-		return MyCommon.Board.VIEW_PATH+"board_list.jsp";
+		return MyCommon.Board.VIEW_PATH+"board_search.jsp";
 	}
 	
 	

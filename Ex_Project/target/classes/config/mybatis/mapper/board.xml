@@ -3,39 +3,47 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b">
-	 <!-- <select id="board_list" resultType="board">
-		select * from board
-	</select> -->
-	<select id="board_list" resultType="board" parameterType="java.util.HashMap">
-		select * from (select rank() over(order by idx desc) no, b.* from board b) where no between #{start} and #{end}
+	<!-- <select id="board_list" resultType="board"> select * from board </select> -->
+	<select id="board_list" resultType="board"
+		parameterType="java.util.HashMap">
+		select * from (select rank() over(order by idx desc) no,
+		b.* from board b) where no between #{start} and #{end}
 	</select>
-	
+
 	<select id="count_page" resultType="int">
 		select count(*) from board
 	</select>
-	
+
 	<insert id="board_write" parameterType="board">
-	 insert into board values(seq_board_idx.nextval,#{title},#{content},#{id},#{ip},sysdate,#{filename},#{hit})
+		insert into board
+		values(seq_board_idx.nextval,#{title},#{content},#{id},#{ip},sysdate,#{filename},#{hit})
 	</insert>
-	
+
 	<delete id="board_delete" parameterType="java.util.Map">
-		delete from board where idx = #{idx} and id = #{id}
+		delete from board where
+		idx = #{idx} and id = #{id}
 	</delete>
-	
+
 	<select id="board_view" resultType="board" parameterType="int">
-		select * from board where idx = #{idx}
+		select
+		* from board where idx = #{idx}
 	</select>
-	
+
 	<update id="board_hit" parameterType="int">
-		update board set hit = hit +1 where idx = #{idx}
+		update board set hit = hit
+		+1 where idx = #{idx}
 	</update>
-	
-	<select id="board_search" resultType="board" parameterType="java.util.HashMap">
-		select * from (select rank() over(order by idx desc) no, b.* from board b) where no between #{start} and #{end} and title = '%' || #{keyword} || '%'
+
+	<select id="board_search" resultType="board"
+		parameterType="java.util.Map">
+		SELECT * FROM (SELECT rank() over(order by idx desc) no, b.* FROM board b WHERE b.title LIKE '%' || #{keyword} || '%'
+		) WHERE no BETWEEN #{start} AND #{end}
 	</select>
-	
-	<select id="count_page_search" resultType="String">
-		select count(*) from board where title = '%' || #{keyword} || '%'
+
+	<select id="count_page_search" resultType="int"
+		parameterType="String">
+		select count(*) from board where title like '%' ||
+		#{keyword} || '%'
 	</select>
 </mapper>
 
