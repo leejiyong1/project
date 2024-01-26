@@ -20,6 +20,7 @@ import dao.BoardDAO;
 import util.Common;
 import util.MyCommon;
 import util.Paging;
+import util.SearchPaging;
 import vo.BoardVO;
 
 @Controller
@@ -141,7 +142,7 @@ public class BoardController {
 		List<BoardVO> list = dao.board_search(map);
 		request.getSession().removeAttribute("hit");
 		int rowTotal = dao.getSearchTotal(keyword);
-		String pageMenu = Paging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE);
+		String pageMenu = SearchPaging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE,keyword);
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
 		return MyCommon.Board.VIEW_PATH+"board_search.jsp";
