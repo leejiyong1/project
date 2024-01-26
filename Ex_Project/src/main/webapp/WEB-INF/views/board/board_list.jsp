@@ -24,7 +24,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/mypage/index.jsp"/>
+	<jsp:include page="/WEB-INF/views/mypage/index.jsp"/>
 	<div class="container">
 	 <a href="board_write_form.do" class="btn btn-success">글쓰기</a>
 		<h2 align="center">게시판</h2>
