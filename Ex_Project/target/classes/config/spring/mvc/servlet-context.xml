@@ -31,5 +31,7 @@
 	<beans:bean class="com.mega.pro.BoardController">
 		<beans:property name="dao" ref="boarddao_bean"/>
 	</beans:bean>
-	
+	<beans:bean class="com.mega.pro.CommentController">
+		<beans:property name="dao" ref="commentdao_bean"/>
+	</beans:bean>
 </beans:beans>

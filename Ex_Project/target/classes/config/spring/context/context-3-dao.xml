@@ -10,4 +10,8 @@
 	<bean id="boarddao_bean" class="dao.BoardDAO">
 		<constructor-arg ref="sqlSessionBean"/>
 	</bean>
+	
+	<bean id="commentdao_bean" class="dao.CommentDAO">
+		<property name="sqlSession" ref="sqlSessionBean"/>
+	</bean>
 </beans>

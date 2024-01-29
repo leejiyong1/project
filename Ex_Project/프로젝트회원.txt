@@ -30,4 +30,17 @@ update board set hit = 1;
 
 insert into board values(seq_board_idx.nextval,'흠','첫글첫글첫글','dlwldyd','00',sysdate,'no_file',0);
 
+create sequence seq_comment_idx;
+CREATE TABLE comments (
+    comment_id number(3) PRIMARY KEY,
+    comment_content clob,
+    member_id varchar2(50),
+    comment_date date,
+    post_id number(3),
+    FOREIGN KEY (member_id) REFERENCES member(id),
+    FOREIGN KEY (post_id) REFERENCES board(idx)
+);
+ALTER TABLE comments RENAME COLUMN comment_id TO comment_idx;
+ALTER TABLE comments RENAME COLUMN post_id TO post_idx;
+alter table comments add com_del number(3);
 
