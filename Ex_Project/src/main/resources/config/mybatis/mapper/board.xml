@@ -39,10 +39,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM (SELECT rank() over(order by idx desc) no, b.* FROM board b WHERE b.title LIKE '%' || #{keyword} || '%'
 		) WHERE no BETWEEN #{start} AND #{end}
 	</select>
-
+	
 	<select id="count_page_search" resultType="int"
 		parameterType="String">
 		select count(*) from board where title like '%' ||
+		#{keyword} || '%'
+	</select>
+	<select id="board_search_tc" resultType="board" parameterType="java.util.Map">
+		SELECT * FROM (SELECT rank() over(order by idx desc) no, b.* FROM board b WHERE b.title LIKE '%' || #{keyword} || '%'
+		or b.content LIKE '%' || #{keyword} || '%'
+		) WHERE no BETWEEN #{start} AND #{end}
+	</select>
+	<select id="count_page_search_tc" resultType="int"
+		parameterType="String">
+		select count(*) from board where title like '%' ||
+		#{keyword} || '%' or content like '%' || #{keyword} || '%'
+	</select>
+	<select id="board_search_id" resultType="board" parameterType="java.util.Map">
+		SELECT * FROM (SELECT rank() over(order by idx desc) no, b.* FROM board b WHERE b.id LIKE '%' || #{keyword} || '%'
+		) WHERE no BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="count_page_search_id" resultType="int"
+		parameterType="String">
+		select count(*) from board where id like '%' ||
 		#{keyword} || '%'
 	</select>
 </mapper>

@@ -76,7 +76,7 @@
 					</c:if>
 					<c:if test="${param.keyword ne null}">
 					<img src="/pro/resources/img/btn_list.gif" 
-					onclick="location.href='board_search.do?page=${param.page}&keyword=${param.keyword }'"
+					onclick="location.href='board_search.do?page=${param.page}&keyword=${param.keyword }&searchType=${param.searchType }'"
 					     style="cursor:pointer;">
 					</c:if>
 					<c:if test="${mem.id eq vo.id }">

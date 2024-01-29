@@ -127,7 +127,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board_search.do")
-	public String board_view(Model model, String page, String keyword) {
+	public String board_view(Model model, String page, String keyword,String searchType) {
 		int nowpage = 1;
 		if(page != null && !page.isEmpty()) {
 			nowpage = Integer.parseInt(page);
@@ -138,10 +138,21 @@ public class BoardController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("keyword", keyword);
-		List<BoardVO> list = dao.board_search(map);
+		List<BoardVO> list = null;
+		int rowTotal = 0;
+		if(searchType.equals("title")) {
+		list = dao.board_search(map);
+		rowTotal = dao.getSearchTotal(keyword);
+		}else if(searchType.equals("titleContent")) {
+			list = dao.board_search_tc(map);
+			rowTotal = dao.getSearchTotaltc(keyword);
+		}else {
+			list = dao.board_search_id(map);
+			rowTotal = dao.getSearchTotalid(keyword);
+		}
 		request.getSession().removeAttribute("hit");
-		int rowTotal = dao.getSearchTotal(keyword);
-		String pageMenu = SearchPaging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE,keyword);
+		 
+		String pageMenu = SearchPaging.getPaging("board_search.do", nowpage, rowTotal, Common.Board.BLOCKLIST, Common.Board.BLOCKPAGE,keyword,searchType);
 		model.addAttribute("list", list);
 		model.addAttribute("menu",pageMenu);
 		return MyCommon.Board.VIEW_PATH+"board_list.jsp";

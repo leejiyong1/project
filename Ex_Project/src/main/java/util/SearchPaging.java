@@ -6,7 +6,7 @@ package util;
         blockPage:한화면에 나타낼 페이지 메뉴 수
  */
 public class SearchPaging {
-	public static String getPaging(String pageURL,int nowPage, int rowTotal,int blockList, int blockPage,String keyword){
+	public static String getPaging(String pageURL,int nowPage, int rowTotal,int blockList, int blockPage,String keyword,String searchType){
 		
 		int totalPage/*전체페이지수*/,
             startPage/*시작페이지번호*/,
@@ -57,6 +57,8 @@ public class SearchPaging {
 			sb.append( startPage-1 );
 			sb.append("&keyword=");
 			sb.append(keyword);
+			sb.append("&searchType=");
+			sb.append(searchType);
 			sb.append("'><img src='/pro/resources/img/btn_prev.gif'></a>");
 		}
 		else
@@ -77,6 +79,8 @@ public class SearchPaging {
 				sb.append(i);
 				sb.append("&keyword=");
 				sb.append(keyword);
+				sb.append("&searchType=");
+				sb.append(searchType);
 				//색상변경은 font태그에서 ↓↓
 				sb.append("'><font color='gray'>");
 				sb.append(i);
@@ -92,6 +96,8 @@ public class SearchPaging {
 			sb.append(endPage + 1);
 			sb.append("&keyword=");
 			sb.append(keyword);
+			sb.append("&searchType=");
+			sb.append(searchType);
 			sb.append("'><img src='/pro/resources/img/btn_next.gif'></a>");
 		}
 		else
