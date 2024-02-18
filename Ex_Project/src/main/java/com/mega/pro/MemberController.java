@@ -1,13 +1,19 @@
 package com.mega.pro;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import dao.MemberDAO;
 import util.MyCommon;
@@ -66,21 +72,23 @@ public class MemberController {
 		if (vo == null) {
 			return "no_id";
 		}
-		
+
 		if (!vo.getPwd().equals(pwd)) {
 			return "no_pwd";
-		}else {
-		session = request.getSession();
-		session.setAttribute("mem", vo);
-		return "yes";
+		} else {
+			session = request.getSession();
+			session.setAttribute("mem", vo);
+			return "yes";
 		}
 	}
-	
+
 	@RequestMapping("logout.do")
 	public String logout() {
 		session = request.getSession();
 		session.removeAttribute("mem");
 		return "redirect:login_form.do";
 	}
+
+	
 
 }
